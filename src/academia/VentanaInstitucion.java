@@ -47,6 +47,8 @@ public class VentanaInstitucion extends javax.swing.JFrame
         cveTextField = new javax.swing.JTextField();
         nombreLabel = new javax.swing.JLabel();
         nomTextField = new javax.swing.JTextField();
+        telLabel = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TECNOLOGICOS");
@@ -58,6 +60,8 @@ public class VentanaInstitucion extends javax.swing.JFrame
         cveInstitucionLabel.setText("Clave Institucion");
 
         nombreLabel.setText("Nombre");
+
+        telLabel.setText("Telefono");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,11 +86,14 @@ public class VentanaInstitucion extends javax.swing.JFrame
                                         .addGap(18, 18, 18))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(12, 12, 12)
-                                        .addComponent(nombreLabel)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(telLabel)
+                                            .addComponent(nombreLabel))
                                         .addGap(49, 49, 49)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cveTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                    .addComponent(nomTextField))))
+                                    .addComponent(nomTextField)
+                                    .addComponent(jTextField1))))
                         .addGap(0, 107, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -108,7 +115,11 @@ public class VentanaInstitucion extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreLabel)
                     .addComponent(nomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telLabel)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,7 +177,9 @@ public class VentanaInstitucion extends javax.swing.JFrame
     private javax.swing.JTextField cveTextField;
     private javax.swing.JLabel dirLabel;
     private javax.swing.JTextField dirTextField;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nomTextField;
     private javax.swing.JLabel nombreLabel;
+    private javax.swing.JLabel telLabel;
     // End of variables declaration//GEN-END:variables
 }
