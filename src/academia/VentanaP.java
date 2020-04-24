@@ -14,7 +14,7 @@ import listas.Nodo;
  */
 public class VentanaP extends javax.swing.JFrame
 {
-    static Nodo raiz=null;
+    public static Nodo raiz=null;
     
     /**
      * Creates new form VentanaP

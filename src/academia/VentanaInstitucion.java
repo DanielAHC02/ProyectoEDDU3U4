@@ -45,7 +45,7 @@ public class VentanaInstitucion extends javax.swing.JFrame
         telTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("TECNOLOGICOS");
+        setTitle("INSTITUTOS TECNOLOGICOS");
 
         agregarButton.setText("Agregar");
         agregarButton.addActionListener(new java.awt.event.ActionListener()
@@ -168,7 +168,6 @@ public class VentanaInstitucion extends javax.swing.JFrame
             nomTextField.requestFocus();
             telTextField.setText("");
             telTextField.requestFocus();
-            System.out.println(Multilistas.desp(VentanaP.raiz, 0));
             this.setVisible(false);
         }
     }//GEN-LAST:event_agregarButtonKeyPressed
