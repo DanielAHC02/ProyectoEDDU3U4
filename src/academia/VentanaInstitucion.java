@@ -5,7 +5,9 @@
  */
 package academia;
 
+import listas.Multilistas;
 import listas.Nodo;
+import proyu3u4.Institucion;
 
 /**
  *
@@ -14,20 +16,12 @@ import listas.Nodo;
 public class VentanaInstitucion extends javax.swing.JFrame
 {
 
-    Nodo raiz;
-
     /**
      * Creates new form VentanaInstitucion
      */
     public VentanaInstitucion()
     {
         initComponents();
-    }
-
-    public VentanaInstitucion(Nodo raiz)
-    {
-        initComponents();
-        this.raiz = raiz;
     }
 
     /**
@@ -48,14 +42,36 @@ public class VentanaInstitucion extends javax.swing.JFrame
         nombreLabel = new javax.swing.JLabel();
         nomTextField = new javax.swing.JTextField();
         telLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        telTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TECNOLOGICOS");
 
         agregarButton.setText("Agregar");
+        agregarButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                agregarButtonActionPerformed(evt);
+            }
+        });
+        agregarButton.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                agregarButtonKeyPressed(evt);
+            }
+        });
 
         dirLabel.setText("Director");
+
+        dirTextField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                dirTextFieldActionPerformed(evt);
+            }
+        });
 
         cveInstitucionLabel.setText("Clave Institucion");
 
@@ -93,7 +109,7 @@ public class VentanaInstitucion extends javax.swing.JFrame
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cveTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                                     .addComponent(nomTextField)
-                                    .addComponent(jTextField1))))
+                                    .addComponent(telTextField))))
                         .addGap(0, 107, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -118,13 +134,45 @@ public class VentanaInstitucion extends javax.swing.JFrame
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telLabel)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_agregarButtonActionPerformed
+    {//GEN-HEADEREND:event_agregarButtonActionPerformed
+    }//GEN-LAST:event_agregarButtonActionPerformed
+
+    private void dirTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_dirTextFieldActionPerformed
+    {//GEN-HEADEREND:event_dirTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dirTextFieldActionPerformed
+
+    private void agregarButtonKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_agregarButtonKeyPressed
+    {//GEN-HEADEREND:event_agregarButtonKeyPressed
+        if (evt.getKeyChar() == '\n')
+        {
+            Institucion ins = new Institucion("", 0, "", 0);
+            Object objInst = ins.datos(dirTextField.getText(), Integer.parseInt(cveTextField.getText()), nomTextField.getText(), Integer.parseInt(telTextField.getText()));
+            Nodo p = new Nodo(objInst, nomTextField.getText());
+            String etiqueta[] = new String[1];
+            etiqueta[0] = nomTextField.getText();
+            VentanaP.raiz = Multilistas.insertar(VentanaP.raiz, p, 0, etiqueta);
+            dirTextField.setText("");
+            dirTextField.requestFocus();
+            cveTextField.setText("");
+            cveTextField.requestFocus();
+            nomTextField.setText("");
+            nomTextField.requestFocus();
+            telTextField.setText("");
+            telTextField.requestFocus();
+            System.out.println(Multilistas.desp(VentanaP.raiz, 0));
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_agregarButtonKeyPressed
 
     /**
      * @param args the command line arguments
@@ -177,9 +225,9 @@ public class VentanaInstitucion extends javax.swing.JFrame
     private javax.swing.JTextField cveTextField;
     private javax.swing.JLabel dirLabel;
     private javax.swing.JTextField dirTextField;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nomTextField;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JLabel telLabel;
+    private javax.swing.JTextField telTextField;
     // End of variables declaration//GEN-END:variables
 }
