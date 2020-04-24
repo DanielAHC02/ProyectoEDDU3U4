@@ -196,7 +196,7 @@ public class VentanaP extends javax.swing.JFrame
             public void run()
             {
                 new VentanaP().setVisible(true);
-                System.out.println("hola");
+                
             }
         });
     }
