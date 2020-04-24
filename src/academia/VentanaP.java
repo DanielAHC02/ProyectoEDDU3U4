@@ -5,6 +5,7 @@
  */
 package academia;
 
+import listas.Multilistas;
 import listas.Nodo;
 
 /**
@@ -13,7 +14,8 @@ import listas.Nodo;
  */
 public class VentanaP extends javax.swing.JFrame
 {
-    Nodo raiz = null;
+    static Nodo raiz=null;
+    
     /**
      * Creates new form VentanaP
      */
@@ -106,8 +108,10 @@ public class VentanaP extends javax.swing.JFrame
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AgregarButtonActionPerformed
     {//GEN-HEADEREND:event_AgregarButtonActionPerformed
-        VentanaInstitucion vtnI = new VentanaInstitucion(raiz);
+        VentanaInstitucion vtnI = new VentanaInstitucion();
         vtnI.setVisible(true);
+        System.out.println(Multilistas.desp(raiz, 0));
+       
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     /**
