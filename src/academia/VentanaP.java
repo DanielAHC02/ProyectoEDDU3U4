@@ -5,6 +5,8 @@
  */
 package academia;
 
+import javax.swing.JButton;
+import listas.GuardaArchivos;
 import listas.Multilistas;
 import listas.Nodo;
 
@@ -14,7 +16,10 @@ import listas.Nodo;
  */
 public class VentanaP extends javax.swing.JFrame
 {
-    public static Nodo raiz=null;
+
+    public static Nodo raiz = (Nodo) GuardaArchivos.carga("Multilista.dat");
+
+    ;
     
     /**
      * Creates new form VentanaP
@@ -22,6 +27,7 @@ public class VentanaP extends javax.swing.JFrame
     public VentanaP()
     {
         initComponents();
+        desp0(raiz,0);
     }
 
     /**
@@ -35,25 +41,24 @@ public class VentanaP extends javax.swing.JFrame
     {
 
         Panel = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         AgregarButton = new javax.swing.JButton();
+        tecComboBox = new javax.swing.JComboBox<>();
+        tecLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TECNOLOGICO NACIONAL DE MEXICO");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
-
-        Panel.setBackground(new java.awt.Color(200, 200, 200));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener()
+        addWindowListener(new java.awt.event.WindowAdapter()
         {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
+            public void windowClosing(java.awt.event.WindowEvent evt)
             {
-                jComboBox1ActionPerformed(evt);
+                formWindowClosing(evt);
             }
         });
+
+        Panel.setBackground(new java.awt.Color(200, 200, 200));
 
         AgregarButton.setText("Agregar");
         AgregarButton.addActionListener(new java.awt.event.ActionListener()
@@ -64,15 +69,31 @@ public class VentanaP extends javax.swing.JFrame
             }
         });
 
+        tecComboBox.setSelectedItem(tecLabel);
+        tecComboBox.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                tecComboBoxActionPerformed(evt);
+            }
+        });
+
+        tecLabel.setText("Tecnologicos");
+
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                .addComponent(AgregarButton)
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addComponent(tecLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+                        .addComponent(AgregarButton))
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addComponent(tecComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelLayout.setVerticalGroup(
@@ -80,8 +101,10 @@ public class VentanaP extends javax.swing.JFrame
             .addGroup(PanelLayout.createSequentialGroup()
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AgregarButton)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(275, Short.MAX_VALUE))
+                    .addComponent(tecLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tecComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         setJMenuBar(jMenuBar1);
@@ -101,18 +124,36 @@ public class VentanaP extends javax.swing.JFrame
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox1ActionPerformed
-    {//GEN-HEADEREND:event_jComboBox1ActionPerformed
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AgregarButtonActionPerformed
     {//GEN-HEADEREND:event_AgregarButtonActionPerformed
         VentanaInstitucion vtnI = new VentanaInstitucion();
         vtnI.setVisible(true);
         System.out.println(Multilistas.desp(raiz, 0));
-       
+
     }//GEN-LAST:event_AgregarButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        GuardaArchivos.guardar(raiz, "Multilista.dat");
+    }//GEN-LAST:event_formWindowClosing
+
+    private void tecComboBoxActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_tecComboBoxActionPerformed
+    {//GEN-HEADEREND:event_tecComboBoxActionPerformed
+        
+    }//GEN-LAST:event_tecComboBoxActionPerformed
+
+    public String desp0(Nodo raiz, int nivel)
+    {
+        String s = "";
+        if (raiz != null)
+        {
+            s = raiz.getEtiqueta();
+            tecComboBox.addItem(s);
+            desp0(raiz.getSig(), 0);
+        }
+        return s;
+    }
+    
 
     /**
      * @param args the command line arguments
@@ -162,7 +203,8 @@ public class VentanaP extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarButton;
     private javax.swing.JPanel Panel;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JComboBox<String> tecComboBox;
+    private javax.swing.JLabel tecLabel;
     // End of variables declaration//GEN-END:variables
 }
